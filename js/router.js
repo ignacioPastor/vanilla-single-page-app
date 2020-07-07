@@ -13,7 +13,6 @@ class Router {
 
   init() {
     window.addEventListener('hashchange', e => {
-      console.log('hashchange event');
       this.hasChanged();
     });
     this.hasChanged();
@@ -39,12 +38,11 @@ class Router {
     const url = `views/${htmlName}`;
     const xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = (contextCall) => {
-      if (contextCall.readyState === 4 && contextCall.status === 200) {
-        this.rootElement.innerHTML = contextCall.resposeText;
+      if (contextCall.currentTarget.readyState === 4 && contextCall.currentTarget.status === 200) {
+        this.rootElement.innerHTML = contextCall.currentTarget.responseText;
       }
     };
     xhttp.open('GET', url, true);
-    // xhttp.open('GET', chrome.extension.getURL(url), true);
     xhttp.send();
   }
 
