@@ -10,7 +10,7 @@ app.use(morgan('dev'));
 // serve static assets normally
 // app.use(express.static(`${__dirname}/../views`));
 
-// Ignore views, they will be loaded by our SPA
+// Ignore views, they will be injected by our SPA
 app.get('/views/*', (req, res) => {
   res.send();
 });
